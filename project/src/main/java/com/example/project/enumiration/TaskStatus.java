@@ -1,5 +1,5 @@
 package com.example.project.enumiration;
 
 public enum TaskStatus {
-    NEW, IN_PROGRESS, COMPLETED
+        NEW, IN_PROGRESS, COMPLETED
 }

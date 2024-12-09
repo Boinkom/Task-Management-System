@@ -1,7 +1,10 @@
 package com.example.project.controllers;
 
+import com.example.project.dto.UserDTO;
 import com.example.project.models.Task;
+import com.example.project.models.User;
 import com.example.project.service.TaskService;
+import com.example.project.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -9,10 +12,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "AllController", description = "Контроллер для работы с задачами, связанными с авторами, исполнителями и названиями.")
 public class AllController {
     private final TaskService taskService;
+    private final UserService userService;
 
     /**
      * Получить задачи по автору.
@@ -85,5 +87,10 @@ public class AllController {
             @RequestParam(defaultValue = "0") @Parameter(description = "Номер страницы, начиная с 0.") int page,
             @RequestParam(defaultValue = "10") @Parameter(description = "Количество элементов на странице.") int size) {
         return taskService.findTasksByTitle(title, page, size);
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<User> register(@RequestBody UserDTO userDTO) {
+        return ResponseEntity.ok(userService.addUser(userDTO));
     }
 }

@@ -1,5 +1,6 @@
 package com.example.project.service;
 
+import com.example.project.dto.UserDTO;
 import com.example.project.models.User;
 import com.example.project.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,6 @@ public class UserService {
     private final BCryptPasswordEncoder passwordEncoder;
 
     public User saveUser(User user) {
-        // Валидация обязательных данных
         if (user.getEmail() == null || user.getEmail().isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email is required");
         }
@@ -52,5 +52,12 @@ public class UserService {
     public User findUserById(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found with id " + id));
+    }
+    public User addUser(UserDTO userDTO) {
+        User user = new User();
+        user.setEmail(userDTO.getEmail());
+        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        user.setRole(userDTO.getRole());
+        return userRepository.save(user);
     }
 }
