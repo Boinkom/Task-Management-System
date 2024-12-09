@@ -1,9 +1,9 @@
 package com.example.project.config;
 
-import com.example.project.repository.UserRepository;
 import com.example.project.models.User;
 import com.example.project.models.UserDetailsEntity;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.project.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,15 +13,11 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.Set;
 
+@RequiredArgsConstructor
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final UserRepository userRepository;
-
-    @Autowired
-    public UserDetailsServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

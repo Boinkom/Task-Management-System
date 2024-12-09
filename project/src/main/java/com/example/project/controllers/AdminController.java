@@ -10,7 +10,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -22,16 +22,14 @@ import java.util.List;
 /**
  * Контроллер для управления задачами и пользователями с административными полномочиями.
  */
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1.0/")
 @Tag(name = "Admin Controller", description = "Контроллер для управления задачами и пользователями администраторами.")
 public class AdminController {
 
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private TaskService taskService;
+    private final UserService userService;
+    private final TaskService taskService;
 
     /**
      * Получить список всех задач.

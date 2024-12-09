@@ -5,18 +5,17 @@ import com.example.project.repository.TasksRepository;
 import com.example.project.models.Comment;
 import com.example.project.models.Task;
 import com.example.project.models.User;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+@RequiredArgsConstructor
 @Service
 public class CommentService {
-    @Autowired
-    private CommentsRepository commentsRepository;
-
-    @Autowired
-    private TasksRepository tasksRepository;
+    private final CommentsRepository commentsRepository;
+    private final TasksRepository tasksRepository;
 
     public void addComments(Long taskId, String commentText, User executor) {
         if (taskId == null || commentText == null || commentText.trim().isEmpty()) {

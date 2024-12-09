@@ -1,8 +1,8 @@
 package com.example.project.service;
 
-import com.example.project.repository.UserRepository;
 import com.example.project.models.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.project.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -10,14 +10,13 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     public User saveUser(User user) {
         // Валидация обязательных данных

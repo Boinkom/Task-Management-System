@@ -1,35 +1,27 @@
 package com.example.project.service;
 
-import com.example.project.repository.TasksRepository;
-import com.example.project.repository.UserRepository;
 import com.example.project.enumiration.TaskStatus;
 import com.example.project.models.Task;
 import com.example.project.models.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.project.repository.TasksRepository;
+import com.example.project.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-
-
 import java.nio.file.AccessDeniedException;
 import java.util.List;
 
-
+@RequiredArgsConstructor
 @Service
 public class TaskService {
-
-    @Autowired
-    private TasksRepository tasksRepository;
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private CommentService commentService;
+    private final TasksRepository tasksRepository;
+    private final UserRepository userRepository;
+    private final CommentService commentService;
 
     public Page<Task> findTasksByAuthor(Long authorId, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);

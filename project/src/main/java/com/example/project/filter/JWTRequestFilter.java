@@ -3,7 +3,6 @@ package com.example.project.filter;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.example.project.utils.JWTUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,7 +11,6 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.context.SecurityContextHolder;
-
 import org.springframework.security.oauth2.server.resource.web.BearerTokenResolver;
 import org.springframework.security.oauth2.server.resource.web.DefaultBearerTokenResolver;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;

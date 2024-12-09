@@ -4,23 +4,22 @@ import com.example.project.enumiration.TaskStatus;
 import com.example.project.models.Task;
 import com.example.project.service.TaskService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.nio.file.AccessDeniedException;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1.0/")
 @Tag(name = "UserController", description = "Контроллер для работы с задачами пользователя.")
 public class UserController {
 
-    @Autowired
     private TaskService taskService;
 
     /**
