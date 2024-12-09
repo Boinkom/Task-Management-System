@@ -10,8 +10,8 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>project</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<version>app</version>
+	<packaging>jar</packaging>
 	<name>project</name>
 	<description>Project for Spring Boot</description>
 	<url/>
@@ -97,6 +97,10 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.11.0</version>
@@ -113,8 +117,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
-
 	</build>
-
 
 </project>
