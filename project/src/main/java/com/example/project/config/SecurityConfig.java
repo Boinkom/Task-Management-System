@@ -30,7 +30,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public UserAuthenticationFilter userAuthenticationFilter(AuthenticationManager authenticationManager, JWTUtils jwtUtils) throws Exception {
+    public UserAuthenticationFilter userAuthenticationFilter(AuthenticationManager authenticationManager, JWTUtils jwtUtils) {
         UserAuthenticationFilter userAuthenticationFilter = new UserAuthenticationFilter(jwtUtils);
         userAuthenticationFilter.setRequiresAuthenticationRequestMatcher(AntPathRequestMatcher.antMatcher(POST, "/api/v1.0/login"));
         userAuthenticationFilter.setAuthenticationManager(authenticationManager);

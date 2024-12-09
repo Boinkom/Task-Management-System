@@ -1,12 +1,11 @@
 package com.example.project.service;
 
-import com.example.project.repository.CommentsRepository;
-import com.example.project.repository.TasksRepository;
 import com.example.project.models.Comment;
 import com.example.project.models.Task;
 import com.example.project.models.User;
+import com.example.project.repository.CommentsRepository;
+import com.example.project.repository.TasksRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;

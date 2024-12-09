@@ -20,7 +20,7 @@ import java.nio.file.AccessDeniedException;
 @Tag(name = "UserController", description = "Контроллер для работы с задачами пользователя.")
 public class UserController {
 
-    private TaskService taskService;
+    private final TaskService taskService;
 
     /**
      * Пример запроса для пользователей с правами 'ADMIN' или 'USER'.
