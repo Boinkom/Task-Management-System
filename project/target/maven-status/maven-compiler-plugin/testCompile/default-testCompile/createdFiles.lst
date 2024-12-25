@@ -1,0 +1,4 @@
+com\example\project\ProjectApplicationTests.class
+com\example\project\service\TaskServiceTest.class
+com\example\project\service\UserServiceTest.class
+com\example\project\service\CommentServiceTest.class
