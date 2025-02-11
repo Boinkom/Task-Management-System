@@ -18,6 +18,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
@@ -48,7 +49,9 @@ public class SecurityConfig {
                                                    UserDetailsService userDetailsService,
                                                    JWTUtils jwtUtils
     ) throws Exception {
-        http.csrf(AbstractHttpConfigurer::disable)
+        http
+                .cors(withDefaults())
+                .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
                         .requestMatchers(
                                 "/api/v1.0/register",
